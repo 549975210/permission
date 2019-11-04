@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <setting name="safeRowBoundsEnabled" value="true"/>
+        <setting name="cacheEnabled" value="false" />
+        <setting name="useGeneratedKeys" value="true" />
+    </settings>
+
+    <!-- 别名 -->
+    <!--<typeAliases>-->
+        <!---->
+    <!--</typeAliases>-->
+
+    <!-- 监听 -->
+    <!--<plugins>-->
+        <!--<plugin interceptor=""></plugin>-->
+    <!--</plugins>-->
+
+    <!-- 本地的类无法与sql里面的值进行对应,把数据库查出来的字段变成本地的类 -->
+    <!--<typeHandlers>-->
+        <!---->
+    <!--</typeHandlers>-->
+
+</configuration>
