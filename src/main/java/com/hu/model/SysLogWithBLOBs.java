@@ -1,5 +1,14 @@
 package com.hu.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+/*
+ * @Author hzq on 2019/11/9
+ * @Description:权限变更日志表中text字段
+ */
 public class SysLogWithBLOBs extends SysLog {
     private String oldValue;
 

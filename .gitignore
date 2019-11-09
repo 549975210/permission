@@ -8,7 +8,4 @@
 .idea/inspectionProfiles/
 .idea/misc.xml
 .idea/vcs.xml
-src/main/java/com/hu/dao/
-src/main/java/com/hu/filter/
-src/main/java/com/hu/service/
-src/main/resources/mapper/
+

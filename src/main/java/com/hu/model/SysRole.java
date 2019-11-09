@@ -1,7 +1,19 @@
 package com.hu.model;
 
-import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+import java.util.Date;
+/*
+ * @Author hzq on 2019/11/9
+ * @Description:角色表
+ */
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class SysRole {
     private Integer id;
 
