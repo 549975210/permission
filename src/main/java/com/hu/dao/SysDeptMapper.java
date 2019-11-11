@@ -1,6 +1,7 @@
 package com.hu.dao;
 
 import com.hu.model.SysDept;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,4 +19,10 @@ public interface SysDeptMapper {
     int updateByPrimaryKey(SysDept record);
 
     List<SysDept> getAllDept();
+
+    List<SysDept> getChildDeptListByLevel(@Param("level") String level, @Param("parentId") Integer parentId);
+
+    void batchUpdateLevel(@Param("sysDeptList") List<SysDept> sysDeptList);
+
+    int countByNameAndParentId(@Param("parentId") Integer parentId, @Param("name") String name, @Param("id") Integer id);
 }

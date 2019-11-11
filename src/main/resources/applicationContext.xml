@@ -24,7 +24,11 @@
         <property name="minIdle" value="3" />
         <property name="maxActive" value="20" />
         <property name="maxWait" value="60000" />
+        <!--
+        wall指防火墙，如果不去掉批量更新的时候会报错
         <property name="filters" value="stat,wall" />
+        -->
+        <property name="filters" value="stat" />
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -53,5 +57,8 @@
     </bean>
     <bean id="wall-filter" class="com.alibaba.druid.wall.WallFilter">
         <property name="dbType" value="mysql" />
+    </bean>
+    <bean id="wall-config" class="com.alibaba.druid.wall.WallConfig">
+        <property name="multiStatementAllow" value="true"/>
     </bean>
 </beans>
