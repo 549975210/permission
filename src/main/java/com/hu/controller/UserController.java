@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -62,6 +63,10 @@ public class UserController {
             request.setAttribute("ret", ret);
         }
         String path = "signin.jsp";
-        request.getRequestDispatcher(path).forward(request, response);
+        RequestDispatcher rd = request.getRequestDispatcher(path);
+        try {
+            rd.forward(request, response);
+            return;
+        }catch(Exception e){}
     }
 }
