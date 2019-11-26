@@ -3,7 +3,6 @@ package com.hu.controller;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hu.common.JsonData;
-import com.hu.model.SysRole;
 import com.hu.model.SysUser;
 import com.hu.param.RoleParam;
 import com.hu.service.SysRoleAclService;
@@ -64,6 +63,7 @@ public class SysRoleController {
         return JsonData.success(sysRoleService.getAll());
     }
 
+    //取当前角色的权限树
     @RequestMapping("/roleTree.json")
     @ResponseBody
     public JsonData roleTree(@RequestParam("roleId") int roleId) {
