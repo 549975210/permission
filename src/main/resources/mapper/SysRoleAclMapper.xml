@@ -122,7 +122,7 @@
       insert into sys_role_acl (role_id, acl_id, operator, operate_time, operate_ip)
       values
       <foreach collection="roleAclList" item="roleAcl"  separator=",">
-          (#{roleAcl.roleid},#{roleAcl.aclId},#{roleAcl.operator},#{roleAcl.operateTime},#{roleAcl.operateIp})
+          (#{roleAcl.roleId},#{roleAcl.aclId},#{roleAcl.operator},#{roleAcl.operateTime},#{roleAcl.operateIp})
       </foreach>
   </insert>
 
