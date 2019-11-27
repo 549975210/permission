@@ -22,6 +22,8 @@ public class SysUserService {
 
     @Resource
     private SysUserMapper sysUserMapper;
+    @Resource
+    private SysLogService sysLogService;
 
     public void save(UserParam param){
         BeanValidator.check(param);
@@ -51,6 +53,7 @@ public class SysUserService {
             System.out.println("发送失败");
         }
         sysUserMapper.insertSelective(user);
+        sysLogService.saveUserLog(null,user);
     }
 
     private boolean checkEmailExist(String mail, Integer id) {
@@ -77,6 +80,7 @@ public class SysUserService {
         after.setOperateIp(IpUtil.getRemoteIp(RequestHolder.getCurrentRequest()));
         after.setOperateTime(new Date());
         sysUserMapper.updateByPrimaryKeySelective(after);
+        sysLogService.saveUserLog(before,after);
     }
 
     public PageResult<SysUser> getPageByDeptId(int deptId, PageQuery page) {

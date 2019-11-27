@@ -145,7 +145,7 @@
     from sys_role
     where id in
     <foreach collection="idList" item="id" index="(" close=")" separator=",">
-      #{id}
+      #{idList}
     </foreach>
   </select>
 </mapper>

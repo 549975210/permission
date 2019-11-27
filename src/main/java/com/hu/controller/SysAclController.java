@@ -1,6 +1,7 @@
 package com.hu.controller;
 
 import com.google.common.collect.Maps;
+import com.hu.service.SysRoleService;
 import com.hu.util.PageQuery;
 import com.hu.common.JsonData;
 import com.hu.model.SysRole;
@@ -23,6 +24,8 @@ public class SysAclController {
 
     @Resource
     private SysAclService sysAclService;
+    @Resource
+    private SysRoleService sysRoleService;
 
 
     @RequestMapping("/save.json")
@@ -45,5 +48,16 @@ public class SysAclController {
         return JsonData.success(sysAclService.getPageByAclModuleId(aclModuleId, pageQuery));
     }
 
+    @RequestMapping("acls.json")
+    @ResponseBody
+    public JsonData acls(@RequestParam("aclId") int aclId) {
+        Map<String, Object> map = Maps.newHashMap();
+        //权限已分配的角色
+        List<SysRole> roleList = sysRoleService.getRoleListByAclId(aclId);
+        map.put("roles", roleList);
+        //权限已分配的用户
+        map.put("users", sysRoleService.getUserListByRoleList(roleList));
+        return JsonData.success(map);
+    }
 
 }

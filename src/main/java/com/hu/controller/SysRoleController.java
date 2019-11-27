@@ -86,6 +86,7 @@ public class SysRoleController {
         return JsonData.success();
     }
 
+    //获取用户相关的数据
     @RequestMapping("/users.json")
     @ResponseBody
     public JsonData users(@RequestParam("roleId") int roleId) {

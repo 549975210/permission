@@ -3,6 +3,7 @@ package com.hu.service;
 import com.google.common.base.Preconditions;
 import com.hu.common.RequestHolder;
 import com.hu.dao.SysDeptMapper;
+import com.hu.dao.SysLogMapper;
 import com.hu.dao.SysUserMapper;
 import com.hu.exception.ParamException;
 import com.hu.model.SysDept;
@@ -30,6 +31,8 @@ public class SysDeptService {
     private SysDeptMapper sysDeptMapper;
     @Resource
     private SysUserMapper sysUserMapper;
+    @Resource
+    private SysLogService sysLogService;
 
     public void save(DeptParam deptParam){
         BeanValidator.check(deptParam);
@@ -46,6 +49,7 @@ public class SysDeptService {
         sysDept.setOperateIp(IpUtil.getRemoteIp(RequestHolder.getCurrentRequest()));
         sysDept.setOperateTime(new Date());
         sysDeptMapper.insertSelective(sysDept);
+        sysLogService.saveDeptLog(null,sysDept);
     }
 
     public void update(DeptParam param) {
@@ -64,6 +68,7 @@ public class SysDeptService {
         after.setOperateTime(new Date());
 
         updateWithChild(before, after);
+        sysLogService.saveDeptLog(before,after);
     }
 
     @Transactional
